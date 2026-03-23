@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p C:/Users/Tumi/WebstormProjects/tumansmedicals/data)",
+      "Bash(mkdir -p C:/Users/Tumi/WebstormProjects/tumansmedicals/lib/schemas)",
+      "Bash(mkdir -p C:/Users/Tumi/WebstormProjects/tumansmedicals/lib/api)",
+      "Bash(mkdir -p C:/Users/Tumi/WebstormProjects/tumansmedicals/hooks)",
+      "Bash(mkdir -p C:/Users/Tumi/WebstormProjects/tumansmedicals/store)",
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "Bash(grep -E \"^axios$|hookform|zod-resolver\")",
+      "Bash(npx shadcn@latest add input label textarea select badge --yes)",
+      "Bash(claude mcp:*)",
+      "Bash(curl -s -X POST \"https://stitch.googleapis.com/mcp\" -H \"Content-Type: application/json\" -H \"X-Goog-Api-Key: AQ.Ab8RN6J7jUdmgjlb81VG_obpy4U4cds7AwlHLtC1UwctI_uGXA\" -d '{\"\"\"\"jsonrpc\"\"\"\":\"\"\"\"2.0\"\"\"\",\"\"\"\"id\"\"\"\":1,\"\"\"\"method\"\"\"\":\"\"\"\"tools/list\"\"\"\",\"\"\"\"params\"\"\"\":{}}')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\(''''result'''',d.get\\(''''error'''',{}\\)\\), indent=2\\)[:3000]\\)\")",
+      "Bash(curl:*)",
+      "Bash(1 __NEW_LINE_7d4af689391f0849__ echo 'Product detail done' cat C:/Users/Tumi/AppData/Local/Temp/stitch_detail_result.json)",
+      "Bash(npx next:*)"
+    ]
+  }
+}
