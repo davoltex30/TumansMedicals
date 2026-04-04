@@ -1,0 +1,84 @@
+[
+  {
+    "id": "proj-002",
+    "title": "Laboratory Equipment Supply – University of Douala Medical Faculty",
+    "slug": "lab-equipment-university-douala",
+    "description": "Supply and installation of a complete teaching laboratory for the Faculty of Medicine and Pharmaceutical Sciences at the University of Douala. Equipment included hematology analyzers, biochemistry analyzers, microscopes, centrifuges, and safety cabinets to support both teaching and diagnostic activities.",
+    "client": "University of Douala – Faculty of Medicine",
+    "location": "Douala, Littoral Region",
+    "image": "/Hero.jpg",
+    "images": [],
+    "status": "completed",
+    "year": "2024",
+    "category": "Laboratory",
+    "technologies": [
+      "Hematology Analyzers",
+      "Biochemistry Analyzers",
+      "Microscopes",
+      "Centrifuges",
+      "Biosafety Cabinets"
+    ],
+    "featured": true
+  },
+  {
+    "id": "proj-003",
+    "title": "Emergency Department Outfitting – Regional Hospital Bafoussam",
+    "slug": "emergency-department-regional-hospital-bafoussam",
+    "description": "Comprehensive outfitting of the emergency department at the Regional Hospital of Bafoussam. The project covered resuscitation trolleys, defibrillators, bedside monitors, oxygen concentrators, and a full stock of emergency consumables, significantly reducing the facility's response time during critical events.",
+    "client": "Regional Hospital of Bafoussam",
+    "location": "Bafoussam, West Region",
+    "image": "/herosectionimage.png",
+    "images": [],
+    "status": "completed",
+    "year": "2023",
+    "category": "Emergency",
+    "technologies": [
+      "Defibrillators",
+      "Patient Monitors",
+      "Oxygen Concentrators",
+      "Resuscitation Trolleys",
+      "Suction Machines"
+    ],
+    "featured": false
+  },
+  {
+    "id": "proj-004",
+    "title": "Diagnostic Kit Supply Agreement – CHU Ngaoundéré",
+    "slug": "diagnostic-kit-supply-chu-ngaoundere",
+    "description": "Ongoing supply agreement for rapid diagnostic test kits at the University Teaching Hospital of Ngaoundéré. The agreement covers malaria RDTs, HIV test kits, hepatitis B surface antigen kits, and typhoid rapid tests — ensuring uninterrupted diagnostic capacity for the hospital's outpatient and inpatient departments.",
+    "client": "CHU de Ngaoundéré",
+    "location": "Ngaoundéré, Adamawa Region",
+    "image": "/Hero.jpg",
+    "images": [],
+    "status": "ongoing",
+    "year": "2023",
+    "category": "Diagnostics",
+    "technologies": [
+      "Malaria RDTs",
+      "HIV Test Kits",
+      "Hepatitis B Kits",
+      "Typhoid Rapid Tests"
+    ],
+    "featured": false
+  },
+  {
+    "id": "proj-005",
+    "title": "Medical Furniture Installation – Clinique Bonanjo Douala",
+    "slug": "medical-furniture-clinique-bonanjo-douala",
+    "description": "Complete medical furniture installation for a new 40-bed private clinic in the Bonanjo district of Douala. The project included hospital beds with adjustable backrests and side rails, examination tables, bedside cabinets, nurses' stations, and a waiting area fit-out — all delivered and installed within a 3-week window.",
+    "client": "Clinique Bonanjo",
+    "location": "Douala, Littoral Region",
+    "image": "/herosectionimage.png",
+    "images": [],
+    "status": "completed",
+    "year": "2024",
+    "category": "Medical Furniture",
+    "technologies": [
+      "Hospital Beds",
+      "Examination Tables",
+      "Bedside Cabinets",
+      "Nurses Stations"
+    ],
+    "featured": true
+  }
+]

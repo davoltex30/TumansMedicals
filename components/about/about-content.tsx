@@ -16,7 +16,7 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2009', event: 'Tumans Medicals SARL founded in Yaounde, Cameroon' },
+  { year: '2009', event: 'Tumans Medicals SARL founded in Douala, Cameroon' },
   { year: '2012', event: 'Expanded product range to include laboratory equipment' },
   { year: '2016', event: 'Became official distributor for leading international brands' },
   { year: '2020', event: 'Opened branches in Douala and Maroua to serve more regions' },
@@ -51,7 +51,7 @@ export function AboutContent() {
             <motion.div variants={slideUp} className="h-1.5 w-24 bg-[#00288e] rounded-full mt-4 mb-6" />
             <motion.p variants={slideUp} className="text-lg text-[#444653] leading-relaxed">
               Since 2009, Tumans Medicals SARL has been Cameroon&apos;s trusted partner for medical and laboratory equipment.
-              With branches in Yaounde, Douala, Maroua, and Tchad, we work closely with hospitals, clinics, and research institutions
+              Headquartered in Douala, with branches in Yaounde, Maroua, and Tchad, we work closely with hospitals, clinics, and research institutions
               to ensure they have the tools they need to save lives.
             </motion.p>
           </motion.div>

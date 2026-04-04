@@ -15,6 +15,7 @@ export function ProductsContent() {
     page: currentPage,
     perPage: 12,
   })
+  const { data: allData } = useProducts({ perPage: 1 })
 
   return (
     <>
@@ -33,7 +34,7 @@ export function ProductsContent() {
           {/* Sidebar filters */}
           <aside className="w-full lg:w-64 flex-shrink-0">
             <div className="sticky top-24">
-              <ProductFilters />
+              <ProductFilters totalCount={allData?.total} />
             </div>
           </aside>
 

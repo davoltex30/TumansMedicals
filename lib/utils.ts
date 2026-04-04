@@ -12,7 +12,7 @@ export function formatWhatsAppMessage(productName: string, productSku?: string):
 }
 
 export function getWhatsAppUrl(productName: string, productSku?: string): string {
-  const phone = '237699000001' // Replace with actual WhatsApp number (Yaounde HQ)
+  const phone = '237699000001' // Replace with actual WhatsApp number (Douala HQ)
   const message = formatWhatsAppMessage(productName, productSku)
   return `https://wa.me/${phone}?text=${message}`
 }

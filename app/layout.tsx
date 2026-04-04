@@ -3,8 +3,7 @@ import { Outfit } from 'next/font/google'
 import './globals.css'
 import { QueryProvider } from '@/components/providers/query-provider'
 import { ToastProvider } from '@/components/providers/toast-provider'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
+import { SiteChrome } from '@/components/layout/site-chrome'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -53,11 +52,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <QueryProvider>
-          <Navbar />
-          <main className="flex-1">
+          <SiteChrome>
             {children}
-          </main>
-          <Footer />
+          </SiteChrome>
           <ToastProvider />
         </QueryProvider>
       </body>

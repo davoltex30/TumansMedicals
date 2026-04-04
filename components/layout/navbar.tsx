@@ -2,16 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'motion/react'
-import { Menu, X, Phone, Plus } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products' },
   { label: 'Categories', href: '/categories' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -37,10 +39,14 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-9 h-9 bg-[#00288e] rounded-full flex items-center justify-center flex-shrink-0">
-              <Plus className="w-5 h-5 text-white" strokeWidth={3} />
-            </div>
-            <span className="font-black text-blue-900 uppercase tracking-tighter text-xl leading-none">
+            <Image
+              src="/logo.png"
+              alt="Tumans Medicals Logo"
+              width={40}
+              height={40}
+              className="object-contain flex-shrink-0"
+            />
+            <span className="font-black uppercase tracking-tighter text-xl leading-none" style={{ color: '#9e5862' }}>
               Tumans Medicals
             </span>
           </Link>
@@ -51,12 +57,12 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={cn(
-                  'px-4 py-2 text-sm font-bold tracking-tight transition-colors',
+                className="px-4 py-2 text-sm font-bold tracking-tight transition-colors"
+                style={
                   pathname === link.href
-                    ? 'text-blue-700 border-b-2 border-blue-700'
-                    : 'text-slate-600 hover:text-blue-700'
-                )}
+                    ? { color: '#9e5862', borderBottom: '2px solid #9e5862' }
+                    : { color: '#475569' }
+                }
               >
                 {link.label}
               </Link>
@@ -67,14 +73,15 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:+237699000001"
-              className="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-700 transition-colors font-medium"
+              className="flex items-center gap-2 text-sm font-medium transition-colors text-slate-600"
             >
               <Phone className="w-4 h-4" />
               <span>+237 699 000 001</span>
             </a>
             <Link
               href="/contact"
-              className="bg-[#00288e] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#1e40af] transition-all"
+              className="text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all hover:opacity-90"
+              style={{ backgroundColor: '#566955' }}
             >
               Get a Quote
             </Link>
@@ -106,12 +113,12 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={cn(
-                    'px-4 py-3 rounded-md text-sm font-bold tracking-tight transition-colors',
+                  className="px-4 py-3 rounded-md text-sm font-bold tracking-tight transition-colors"
+                  style={
                     pathname === link.href
-                      ? 'text-blue-700 bg-blue-50'
-                      : 'text-slate-600 hover:text-blue-700 hover:bg-slate-50'
-                  )}
+                      ? { color: '#9e5862', backgroundColor: '#fdf2f3' }
+                      : { color: '#475569' }
+                  }
                 >
                   {link.label}
                 </Link>
@@ -126,7 +133,8 @@ export function Navbar() {
                 </a>
                 <Link
                   href="/contact"
-                  className="mx-4 text-center bg-[#00288e] text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-[#1e40af] transition-all"
+                  className="mx-4 text-center text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:opacity-90 transition-all"
+                  style={{ backgroundColor: '#566955' }}
                 >
                   Get a Quote
                 </Link>

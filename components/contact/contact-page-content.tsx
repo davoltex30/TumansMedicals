@@ -16,17 +16,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 const branches = [
   {
-    city: 'Yaounde',
+    city: 'Douala',
     label: 'Head Office',
-    address: 'Yaounde, Cameroon',
+    address: 'Douala, Cameroon',
     phone: '+237 699 000 001',
     phonePlain: '237699000001',
     whatsapp: '237699000001',
   },
   {
-    city: 'Douala',
-    label: 'Douala Branch',
-    address: 'Douala, Cameroon',
+    city: 'Yaounde',
+    label: 'Yaounde Branch',
+    address: 'Yaounde, Cameroon',
     phone: '+237 699 000 002',
     phonePlain: '237699000002',
     whatsapp: '237699000002',
@@ -89,7 +89,7 @@ export function ContactPageContent() {
             </motion.h1>
             <motion.div variants={slideUp} className="h-1.5 w-24 bg-[#00288e] rounded-full mt-4 mb-6" />
             <motion.p variants={slideUp} className="text-lg text-[#444653] leading-relaxed">
-              Get in touch for product inquiries and supply solutions. Reach any of our branches in Yaounde, Douala, Maroua, or Tchad.
+              Get in touch for product inquiries and supply solutions. Reach any of our branches in Douala, Yaounde, Maroua, or Tchad.
             </motion.p>
           </motion.div>
         </div>

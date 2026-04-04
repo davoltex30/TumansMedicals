@@ -2,24 +2,19 @@
 
 import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Search, X, Scissors, FlaskConical, TestTube, Building2, Zap, Package, LayoutGrid } from 'lucide-react'
+import { Search, X, LayoutGrid } from 'lucide-react'
 import { useFilterStore } from '@/store/filter-store'
 import { useCategories } from '@/hooks/use-categories'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Scissors, FlaskConical, TestTube, Building2, Zap, Package
-}
-
-export function ProductFilters() {
+export function ProductFilters({ totalCount }: { totalCount?: number }) {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { selectedCategory, searchQuery, setCategory, setSearch, resetFilters } = useFilterStore()
   const { data: categories } = useCategories()
 
-  // Sync from URL on mount
   useEffect(() => {
     const cat = searchParams.get('category')
     const q = searchParams.get('q')
@@ -27,7 +22,6 @@ export function ProductFilters() {
     if (q) setSearch(q)
   }, []) // eslint-disable-line
 
-  // Sync to URL on state change
   useEffect(() => {
     const params = new URLSearchParams()
     if (selectedCategory) params.set('category', selectedCategory)
@@ -39,13 +33,11 @@ export function ProductFilters() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div>
         <h3 className="text-lg font-bold text-[#191c1e]">Browse Products</h3>
         <p className="text-xs text-[#757684] uppercase tracking-widest mt-0.5">Filter by category</p>
       </div>
 
-      {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#757684] pointer-events-none" />
         <Input
@@ -58,11 +50,9 @@ export function ProductFilters() {
         />
       </div>
 
-      {/* Category Filter */}
       <div>
         <p className="text-xs text-[#757684] uppercase tracking-widest mb-3 font-semibold">Categories</p>
         <div className="space-y-1">
-          {/* All */}
           <button
             onClick={() => setCategory(null)}
             className={cn(
@@ -73,11 +63,15 @@ export function ProductFilters() {
             )}
           >
             <LayoutGrid className="w-4 h-4 flex-shrink-0" />
-            <span className="font-semibold">All Products</span>
+            <span className="flex-1 font-semibold">All Products</span>
+            {totalCount !== undefined && (
+              <span className={cn('text-xs tabular-nums', !selectedCategory ? 'text-blue-500' : 'text-[#c4c5d5]')}>
+                {totalCount}
+              </span>
+            )}
           </button>
 
           {categories?.map((cat) => {
-            const Icon = iconMap[cat.icon] || Package
             const isActive = selectedCategory === cat.id
             return (
               <button
@@ -90,9 +84,8 @@ export function ProductFilters() {
                     : 'text-slate-500 hover:bg-slate-100 hover:translate-x-1'
                 )}
               >
-                <Icon className="w-4 h-4 flex-shrink-0" />
                 <span className="flex-1">{cat.name}</span>
-                <span className={cn('text-xs', isActive ? 'text-blue-500' : 'text-[#c4c5d5]')}>
+                <span className={cn('text-xs tabular-nums', isActive ? 'text-blue-500' : 'text-[#c4c5d5]')}>
                   {cat.productCount}
                 </span>
               </button>
@@ -101,7 +94,6 @@ export function ProductFilters() {
         </div>
       </div>
 
-      {/* Reset */}
       {hasFilters && (
         <button
           onClick={resetFilters}
@@ -112,7 +104,6 @@ export function ProductFilters() {
         </button>
       )}
 
-      {/* Request Quote CTA */}
       <div className="pt-4 border-t border-[#e0e3e5]">
         <Link
           href="/contact"

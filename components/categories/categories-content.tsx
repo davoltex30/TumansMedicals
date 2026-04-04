@@ -2,39 +2,23 @@
 
 import { motion, useInView } from 'motion/react'
 import Link from 'next/link'
-import { useRef } from 'react'
-import { ArrowRight, Scissors, FlaskConical, TestTube, Building2, Zap, Package } from 'lucide-react'
+import Image from 'next/image'
+import { useRef, useState } from 'react'
+import { ArrowRight, Search } from 'lucide-react'
 import { staggerContainer, slideUp } from '@/lib/animations'
-import { Section, SectionHeader } from '@/components/layout/section'
+import { Section } from '@/components/layout/section'
 import { useCategories } from '@/hooks/use-categories'
-import { cn } from '@/lib/utils'
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Scissors, FlaskConical, TestTube, Building2, Zap, Package
-}
-
-const bgMap: Record<string, string> = {
-  surgical: 'from-red-50 to-red-100/50 border-red-200',
-  laboratory: 'from-blue-50 to-blue-100/50 border-blue-200',
-  diagnostic: 'from-purple-50 to-purple-100/50 border-purple-200',
-  furniture: 'from-amber-50 to-amber-100/50 border-amber-200',
-  emergency: 'from-orange-50 to-orange-100/50 border-orange-200',
-  consumables: 'from-green-50 to-green-100/50 border-green-200',
-}
-
-const iconColorMap: Record<string, string> = {
-  surgical: 'text-red-600 bg-red-100',
-  laboratory: 'text-blue-600 bg-blue-100',
-  diagnostic: 'text-purple-600 bg-purple-100',
-  furniture: 'text-amber-600 bg-amber-100',
-  emergency: 'text-orange-600 bg-orange-100',
-  consumables: 'text-green-600 bg-green-100',
-}
 
 export function CategoriesContent() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
   const { data: categories, isLoading } = useCategories()
+  const [search, setSearch] = useState('')
+
+  const filtered = (categories || []).filter((cat) =>
+    cat.name.toLowerCase().includes(search.toLowerCase()) ||
+    cat.description.toLowerCase().includes(search.toLowerCase())
+  )
 
   return (
     <>
@@ -42,49 +26,77 @@ export function CategoriesContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">Product Categories</h1>
           <p className="text-muted-foreground">Browse our full range of medical and laboratory equipment categories.</p>
+
+          {/* Search */}
+          <div className="relative mt-6 max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+            <input
+              type="search"
+              placeholder="Search categories..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-9 pr-4 h-11 rounded-lg border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#00288e] focus:border-transparent"
+            />
+          </div>
         </div>
       </section>
 
       <Section>
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {(categories || []).map((cat) => {
-            const Icon = iconMap[cat.icon] || Package
-            const bg = bgMap[cat.id] || 'from-gray-50 to-gray-100/50 border-gray-200'
-            const iconColor = iconColorMap[cat.id] || 'text-gray-600 bg-gray-100'
-
-            return (
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-56 bg-slate-100 animate-pulse rounded-2xl" />
+            ))}
+          </div>
+        ) : filtered.length === 0 ? (
+          <p className="text-center text-muted-foreground py-16">No categories found for &ldquo;{search}&rdquo;.</p>
+        ) : (
+          <motion.div
+            ref={ref}
+            variants={staggerContainer}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {filtered.map((cat) => (
               <motion.div key={cat.id} variants={slideUp}>
                 <Link
                   href={`/products?category=${cat.id}`}
-                  className={cn(
-                    'group block rounded-2xl border bg-gradient-to-br p-8 hover:shadow-md transition-all duration-200',
-                    bg
-                  )}
+                  className="group block rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-all duration-200 overflow-hidden"
                 >
-                  <div className={cn('w-14 h-14 rounded-2xl flex items-center justify-center mb-5', iconColor)}>
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <h2 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {cat.name}
-                  </h2>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">{cat.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-muted-foreground">{cat.productCount} products</span>
-                    <span className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                      Browse <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
+                  {/* Image — only shown if category has one */}
+                  {cat.image && cat.image !== '/No_Image_Available.jpg' && (
+                    <div className="relative w-full h-40 overflow-hidden">
+                      <Image
+                        src={cat.image}
+                        alt={cat.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+
+                  <div className="p-6">
+                    <h2 className="text-lg font-bold text-foreground mb-1.5 group-hover:text-[#00288e] transition-colors">
+                      {cat.name}
+                    </h2>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                      {cat.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
+                        {cat.productCount} products
+                      </span>
+                      <span className="flex items-center gap-1 text-sm font-semibold text-[#00288e] opacity-0 group-hover:opacity-100 transition-opacity">
+                        Browse <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
-            )
-          })}
-        </motion.div>
+            ))}
+          </motion.div>
+        )}
       </Section>
     </>
   )
