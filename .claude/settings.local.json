@@ -33,7 +33,9 @@
       "mcp__claude_ai_Supabase__get_publishable_keys",
       "mcp__claude_ai_Supabase__apply_migration",
       "mcp__claude_ai_Supabase__execute_sql",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "mcp__claude_ai_Supabase__list_tables",
+      "Bash(npx tsx:*)"
     ]
   }
 }
