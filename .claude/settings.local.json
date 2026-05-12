@@ -45,7 +45,8 @@
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(xargs ls)",
       "Bash(npm uninstall *)",
-      "Bash(Remove-Item *)"
+      "Bash(Remove-Item *)",
+      "Bash(next build *)"
     ]
   }
 }
