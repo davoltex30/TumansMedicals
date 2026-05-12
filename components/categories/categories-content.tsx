@@ -5,10 +5,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
 import { ArrowRight, Search } from 'lucide-react'
-import { Skeleton } from 'boneyard-js/react'
 import { staggerContainer, slideUp } from '@/lib/animations'
 import { Section } from '@/components/layout/section'
 import { useCategories } from '@/hooks/use-categories'
+
+function CategoryCardSkeleton() {
+  return (
+    <div className="flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden animate-pulse">
+      <div className="w-full h-40 bg-slate-200" />
+      <div className="flex flex-col p-6 gap-3">
+        <div className="h-4 bg-slate-200 rounded w-3/5" />
+        <div className="h-3 bg-slate-100 rounded w-full" />
+        <div className="h-3 bg-slate-100 rounded w-4/5" />
+        <div className="mt-1 h-5 bg-slate-100 rounded w-1/4" />
+      </div>
+    </div>
+  )
+}
 
 export function CategoriesContent() {
   const ref = useRef(null)
@@ -46,9 +59,7 @@ export function CategoriesContent() {
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
-              <Skeleton key={i} name="category-card" loading={true}>
-                <div />
-              </Skeleton>
+              <CategoryCardSkeleton key={i} />
             ))}
           </div>
         ) : filtered.length === 0 ? (
@@ -62,13 +73,11 @@ export function CategoriesContent() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((cat) => (
-              <Skeleton key={cat.id} name="category-card" loading={false}>
-              <motion.div variants={slideUp}>
+              <motion.div key={cat.id} variants={slideUp}>
                 <Link
                   href={`/products?category=${cat.id}`}
                   className="group block rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-all duration-200 overflow-hidden"
                 >
-                  {/* Image — only shown if category has one */}
                   {cat.image && cat.image !== '/No_Image_Available.jpg' && (
                     <div className="relative w-full h-40 overflow-hidden">
                       <Image
@@ -98,7 +107,6 @@ export function CategoriesContent() {
                   </div>
                 </Link>
               </motion.div>
-              </Skeleton>
             ))}
           </motion.div>
         )}

@@ -1,9 +1,10 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import type { Product } from '@/lib/schemas/product'
 import { deleteProduct } from '@/lib/admin/actions'
 import { DeleteButton } from '@/components/admin/delete-button'
-import { Plus, Pencil } from 'lucide-react'
+import { Plus, Pencil, ImageOff } from 'lucide-react'
 
 function rowToProduct(row: Record<string, unknown>): Product {
   return {
@@ -61,6 +62,7 @@ export default async function AdminProductsPage() {
           <table className="w-full text-sm">
             <thead className="bg-slate-50 border-b border-slate-200">
               <tr>
+                <th className="px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden sm:table-cell w-16">Image</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide">Product</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden md:table-cell">Category</th>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wide hidden lg:table-cell">SKU</th>
@@ -71,6 +73,17 @@ export default async function AdminProductsPage() {
             <tbody className="divide-y divide-slate-100">
               {products.map((product) => (
                 <tr key={product.id} className="hover:bg-slate-50 transition-colors">
+                  <td className="px-5 py-3 hidden sm:table-cell">
+                    {product.image ? (
+                      <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 flex-shrink-0">
+                        <Image src={product.image} alt={product.name} fill className="object-cover" sizes="40px" />
+                      </div>
+                    ) : (
+                      <div className="w-10 h-10 rounded-lg border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-300 flex-shrink-0">
+                        <ImageOff className="w-4 h-4" />
+                      </div>
+                    )}
+                  </td>
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2">
                       <p className="font-medium text-slate-900 truncate max-w-xs">{product.name}</p>

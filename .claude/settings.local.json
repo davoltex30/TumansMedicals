@@ -42,7 +42,10 @@
       "Bash(npm show:*)",
       "Bash(npm list:*)",
       "Bash(Get-ChildItem -Path \"app\" -Recurse -Filter \"*api*\" -Directory)",
-      "Bash(Select-Object -ExpandProperty FullName)"
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(xargs ls)",
+      "Bash(npm uninstall *)",
+      "Bash(Remove-Item *)"
     ]
   }
 }

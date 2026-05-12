@@ -4,7 +4,6 @@ import './globals.css'
 import { QueryProvider } from '@/components/providers/query-provider'
 import { ToastProvider } from '@/components/providers/toast-provider'
 import { SiteChrome } from '@/components/layout/site-chrome'
-import '../bones/registry'
 
 const outfit = Outfit({
   subsets: ['latin'],

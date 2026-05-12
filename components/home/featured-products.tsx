@@ -6,8 +6,8 @@ import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { slideUp, staggerContainer } from '@/lib/animations'
 import { Section } from '@/components/layout/section'
-import { Skeleton } from 'boneyard-js/react'
 import { ProductCard } from '@/components/products/product-card'
+import { ProductCardSkeleton } from '@/components/products/product-grid'
 import { useProducts } from '@/hooks/use-products'
 
 export function FeaturedProducts() {
@@ -33,9 +33,7 @@ export function FeaturedProducts() {
       {isLoading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {Array.from({ length: 6 }).map((_, i) => (
-            <Skeleton key={i} name="product-card" loading={true}>
-              <div />
-            </Skeleton>
+            <ProductCardSkeleton key={i} />
           ))}
         </div>
       ) : (
@@ -47,9 +45,9 @@ export function FeaturedProducts() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
         >
           {(data?.data || []).slice(0, 6).map((product) => (
-            <Skeleton key={product.id} name="product-card" loading={false}>
+            <motion.div key={product.id} variants={slideUp}>
               <ProductCard product={product} />
-            </Skeleton>
+            </motion.div>
           ))}
         </motion.div>
       )}
