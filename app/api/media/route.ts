@@ -1,25 +1,25 @@
+import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
-export function GET() {
-  const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
+export async function GET() {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
 
-  if (!fs.existsSync(uploadsDir)) {
-    return NextResponse.json({ files: [] })
-  }
+  const { data, error } = await supabase.storage.from('uploads').list('', {
+    limit: 200,
+    sortBy: { column: 'created_at', order: 'desc' },
+  })
 
-  const entries = fs.readdirSync(uploadsDir)
-  const imageExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
+  if (error || !data) return NextResponse.json({ files: [] })
 
-  const files = entries
-    .filter((name) => imageExts.includes(path.extname(name).toLowerCase()))
-    .sort((a, b) => {
-      const aTime = fs.statSync(path.join(uploadsDir, a)).mtimeMs
-      const bTime = fs.statSync(path.join(uploadsDir, b)).mtimeMs
-      return bTime - aTime
+  const files = data
+    .filter((f) => f.name !== '.emptyFolderPlaceholder')
+    .map((f) => {
+      const { data: { publicUrl } } = supabase.storage.from('uploads').getPublicUrl(f.name)
+      return { url: publicUrl, name: f.name }
     })
-    .map((name) => ({ url: `/uploads/${name}`, name }))
 
   return NextResponse.json({ files })
 }

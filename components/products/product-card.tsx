@@ -43,7 +43,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
         />
         {product.badge && (
           <div className="absolute top-3 left-3">
-            <span className="text-xs text-[#00288e] font-bold uppercase tracking-widest bg-white px-2.5 py-1 rounded-md shadow-sm">
+            <span className="text-xs text-[#c51611] font-bold uppercase tracking-widest bg-white px-2.5 py-1 rounded-md shadow-sm">
               {product.badge}
             </span>
           </div>
@@ -60,7 +60,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       {/* Content */}
       <div className="flex flex-col flex-1 p-5">
         <div className="mb-1.5">
-          <span className="text-xs text-[#00288e] font-bold uppercase tracking-widest">
+          <span className="text-xs text-[#c51611] font-bold uppercase tracking-widest">
             {product.categoryName}
           </span>
         </div>
@@ -80,7 +80,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
         <div className="flex gap-2 mt-auto">
           <Link
             href={`/products/${product.slug}`}
-            className="flex-1 inline-flex items-center justify-center gap-1 border border-[#c4c5d5] text-[#191c1e] rounded-lg text-xs font-bold px-2.5 py-1.5 whitespace-nowrap hover:border-[#00288e] hover:text-[#00288e] transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-1 border border-[#c4c5d5] text-[#191c1e] rounded-lg text-xs font-bold px-2.5 py-1.5 whitespace-nowrap hover:border-[#c51611] hover:text-[#c51611] transition-all"
           >
             <span>View Details</span>
             <ArrowRight className="w-3 h-3" />

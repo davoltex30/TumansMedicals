@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRef, useState } from 'react'
 import { ArrowRight, Search } from 'lucide-react'
+import { Skeleton } from 'boneyard-js/react'
 import { staggerContainer, slideUp } from '@/lib/animations'
 import { Section } from '@/components/layout/section'
 import { useCategories } from '@/hooks/use-categories'
@@ -35,7 +36,7 @@ export function CategoriesContent() {
               placeholder="Search categories..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 h-11 rounded-lg border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#00288e] focus:border-transparent"
+              className="w-full pl-9 pr-4 h-11 rounded-lg border border-input bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#c51611] focus:border-transparent"
             />
           </div>
         </div>
@@ -45,7 +46,9 @@ export function CategoriesContent() {
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="h-56 bg-slate-100 animate-pulse rounded-2xl" />
+              <Skeleton key={i} name="category-card" loading={true}>
+                <div />
+              </Skeleton>
             ))}
           </div>
         ) : filtered.length === 0 ? (
@@ -59,7 +62,8 @@ export function CategoriesContent() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((cat) => (
-              <motion.div key={cat.id} variants={slideUp}>
+              <Skeleton key={cat.id} name="category-card" loading={false}>
+              <motion.div variants={slideUp}>
                 <Link
                   href={`/products?category=${cat.id}`}
                   className="group block rounded-2xl border border-slate-200 bg-white hover:shadow-lg transition-all duration-200 overflow-hidden"
@@ -77,7 +81,7 @@ export function CategoriesContent() {
                   )}
 
                   <div className="p-6">
-                    <h2 className="text-lg font-bold text-foreground mb-1.5 group-hover:text-[#00288e] transition-colors">
+                    <h2 className="text-lg font-bold text-foreground mb-1.5 group-hover:text-[#c51611] transition-colors">
                       {cat.name}
                     </h2>
                     <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
@@ -87,13 +91,14 @@ export function CategoriesContent() {
                       <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full">
                         {cat.productCount} products
                       </span>
-                      <span className="flex items-center gap-1 text-sm font-semibold text-[#00288e] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="flex items-center gap-1 text-sm font-semibold text-[#c51611] opacity-0 group-hover:opacity-100 transition-opacity">
                         Browse <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
                   </div>
                 </Link>
               </motion.div>
+              </Skeleton>
             ))}
           </motion.div>
         )}

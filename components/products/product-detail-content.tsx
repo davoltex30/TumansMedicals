@@ -61,7 +61,7 @@ export function ProductDetailContent({ product, relatedProducts }: Props) {
               />
               {product.badge && (
                 <div className="absolute top-4 left-4">
-                  <span className="bg-[#00288e] text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+                  <span className="bg-[#c51611] text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
                     {product.badge}
                   </span>
                 </div>
@@ -74,7 +74,7 @@ export function ProductDetailContent({ product, relatedProducts }: Props) {
             <div className="mb-1">
               <Link
                 href={`/products?category=${product.categoryId}`}
-                className="text-xs font-bold uppercase tracking-widest text-[#00288e] hover:underline"
+                className="text-xs font-bold uppercase tracking-widest text-[#c51611] hover:underline"
               >
                 {product.categoryName}
               </Link>
@@ -124,7 +124,7 @@ export function ProductDetailContent({ product, relatedProducts }: Props) {
               </a>
               <Link
                 href="/contact"
-                className="border-2 border-[#00288e] text-[#00288e] hover:bg-[#00288e] hover:text-white rounded-xl font-bold h-14 flex-1 flex items-center justify-center transition-all"
+                className="border-2 border-[#c51611] text-[#c51611] hover:bg-[#c51611] hover:text-white rounded-xl font-bold h-14 flex-1 flex items-center justify-center transition-all"
               >
                 Request Quote
               </Link>
@@ -155,7 +155,7 @@ export function ProductDetailContent({ product, relatedProducts }: Props) {
       {relatedProducts.length > 0 && (
         <Section className="bg-white">
           <div className="mb-12 text-center">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#00288e]">Related Products</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#c51611]">Related Products</span>
             <h2 className="text-2xl font-bold text-[#191c1e] tracking-tight mt-2">You May Also Need</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

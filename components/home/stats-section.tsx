@@ -28,7 +28,7 @@ export function StatsSection() {
         >
           {stats.map((stat) => (
             <motion.div key={stat.label} variants={slideUp} className="text-center lg:text-left">
-              <div className="text-4xl lg:text-5xl font-black text-[#00288e] mb-1">{stat.value}</div>
+              <div className="text-4xl lg:text-5xl font-black text-[#c51611] mb-1">{stat.value}</div>
               <div className="text-xs uppercase tracking-widest text-[#191c1e] mt-1 font-semibold">{stat.label}</div>
               <div className="text-sm text-[#757684] mt-1">{stat.desc}</div>
             </motion.div>

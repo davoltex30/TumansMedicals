@@ -24,7 +24,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-[#00288e] rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-9 h-9 bg-[#c51611] rounded-full flex items-center justify-center flex-shrink-0">
                 <Plus className="w-5 h-5 text-white" strokeWidth={3} />
               </div>
               <span className="font-black text-white uppercase tracking-tighter text-xl leading-none">
@@ -51,7 +51,7 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[#b8c4ff] mb-4">Products</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#fca5a5] mb-4">Products</h3>
             <ul className="space-y-3">
               {productLinks.map((link) => (
                 <li key={link.href}>
@@ -65,7 +65,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[#b8c4ff] mb-4">Company</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#fca5a5] mb-4">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
@@ -79,7 +79,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-[#b8c4ff] mb-4">Contact Us</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#fca5a5] mb-4">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#9498a8] mt-0.5 flex-shrink-0" />

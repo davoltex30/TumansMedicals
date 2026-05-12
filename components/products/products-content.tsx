@@ -69,7 +69,7 @@ export function ProductsContent() {
                     <button
                       onClick={() => { setPage(page - 1); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                       disabled={page === 1}
-                      className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#e0e3e5] text-[#191c1e] hover:border-[#00288e] hover:text-[#00288e] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                      className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#e0e3e5] text-[#191c1e] hover:border-[#c51611] hover:text-[#c51611] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                       aria-label="Previous page"
                     >
                       <ChevronLeft className="w-4 h-4" />
@@ -84,8 +84,8 @@ export function ProductsContent() {
                           onClick={() => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                           className={`w-9 h-9 flex items-center justify-center rounded-lg text-sm font-bold transition-all ${
                             p === page
-                              ? 'bg-[#00288e] text-white'
-                              : 'border border-[#e0e3e5] text-[#191c1e] hover:border-[#00288e] hover:text-[#00288e]'
+                              ? 'bg-[#c51611] text-white'
+                              : 'border border-[#e0e3e5] text-[#191c1e] hover:border-[#c51611] hover:text-[#c51611]'
                           }`}
                           aria-label={`Page ${p}`}
                           aria-current={p === page ? 'page' : undefined}
@@ -98,7 +98,7 @@ export function ProductsContent() {
                     <button
                       onClick={() => { setPage(page + 1); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
                       disabled={page === totalPages}
-                      className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#e0e3e5] text-[#191c1e] hover:border-[#00288e] hover:text-[#00288e] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                      className="w-9 h-9 flex items-center justify-center rounded-lg border border-[#e0e3e5] text-[#191c1e] hover:border-[#c51611] hover:text-[#c51611] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                       aria-label="Next page"
                     >
                       <ChevronRight className="w-4 h-4" />

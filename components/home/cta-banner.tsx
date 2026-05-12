@@ -12,7 +12,7 @@ export function CtaBanner() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <Section className="bg-[#00288e]">
+    <Section className="bg-[#c51611]">
       <motion.div
         ref={ref}
         variants={staggerContainer}

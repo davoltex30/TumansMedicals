@@ -10,7 +10,6 @@ import {
   Briefcase,
   Package,
   Tag,
-  ImageIcon,
   LogOut,
   ExternalLink,
   Plus,
@@ -23,7 +22,6 @@ const sidebarLinks = [
   { label: 'Projects', href: '/admin/projects', icon: Briefcase },
   { label: 'Products', href: '/admin/products', icon: Package },
   { label: 'Categories', href: '/admin/categories', icon: Tag },
-  { label: 'Media', href: '/admin/media', icon: ImageIcon },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

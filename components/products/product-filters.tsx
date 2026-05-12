@@ -45,7 +45,7 @@ export function ProductFilters({ totalCount }: { totalCount?: number }) {
           placeholder="Search products..."
           value={searchQuery}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-9 h-11 bg-white border-[#c4c5d5] text-[#191c1e] placeholder:text-[#757684] focus:border-[#00288e] focus:ring-[#00288e]"
+          className="pl-9 h-11 bg-white border-[#c4c5d5] text-[#191c1e] placeholder:text-[#757684] focus:border-[#c51611] focus:ring-[#c51611]"
           aria-label="Search products"
         />
       </div>
@@ -107,7 +107,7 @@ export function ProductFilters({ totalCount }: { totalCount?: number }) {
       <div className="pt-4 border-t border-[#e0e3e5]">
         <Link
           href="/contact"
-          className="block w-full text-center bg-[#00288e] text-white px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#1e40af] transition-all"
+          className="block w-full text-center bg-[#c51611] text-white px-4 py-3 rounded-lg font-bold text-sm hover:bg-[#4c8b32] transition-all"
         >
           Request a Quote
         </Link>

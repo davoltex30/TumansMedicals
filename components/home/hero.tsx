@@ -61,7 +61,7 @@ export function Hero() {
             className="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight mb-6"
           >
             Equipping Healthcare.{' '}
-            <span className="text-[#b8c4ff]">Empowering Lives.</span>
+            <span className="text-[#fca5a5]">Empowering Lives.</span>
           </motion.h1>
 
           {/* Sub */}
@@ -77,7 +77,7 @@ export function Hero() {
           <motion.div variants={slideUp} className="flex flex-wrap gap-4 mb-14">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 bg-[#1e40af] hover:bg-[#1e3a8a] text-white px-8 py-3.5 rounded-lg font-bold text-base transition-all shadow-lg shadow-blue-900/40"
+              className="inline-flex items-center gap-2 bg-[#c51611] hover:bg-[#a01210] text-white px-8 py-3.5 rounded-lg font-bold text-base transition-all shadow-lg shadow-blue-900/40"
             >
               Browse Catalog
               <ArrowRight className="w-4 h-4" />
@@ -98,7 +98,7 @@ export function Hero() {
             {stats.map((stat) => (
               <motion.div key={stat.label} variants={slideUp} className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center shrink-0">
-                  <stat.icon className="w-5 h-5 text-[#b8c4ff]" />
+                  <stat.icon className="w-5 h-5 text-[#fca5a5]" />
                 </div>
                 <div>
                   <div className="text-2xl font-black text-white leading-none">{stat.value}</div>

@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'motion/react'
+import { Skeleton } from 'boneyard-js/react'
 import { staggerContainer } from '@/lib/animations'
 import { ProductCard } from './product-card'
-import { ProductGridSkeleton } from './product-skeleton'
 import type { Product } from '@/lib/schemas/product'
 import { PackageSearch } from 'lucide-react'
 
@@ -14,7 +14,17 @@ interface ProductGridProps {
 }
 
 export function ProductGrid({ products, isLoading, emptyMessage = 'No products found.' }: ProductGridProps) {
-  if (isLoading) return <ProductGridSkeleton />
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} name="product-card" loading={true}>
+            <div />
+          </Skeleton>
+        ))}
+      </div>
+    )
+  }
 
   if (products.length === 0) {
     return (
@@ -33,7 +43,9 @@ export function ProductGrid({ products, isLoading, emptyMessage = 'No products f
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
     >
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <Skeleton key={product.id} name="product-card" loading={false}>
+          <ProductCard product={product} />
+        </Skeleton>
       ))}
     </motion.div>
   )

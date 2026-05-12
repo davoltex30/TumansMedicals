@@ -6,8 +6,8 @@ import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { slideUp, staggerContainer } from '@/lib/animations'
 import { Section } from '@/components/layout/section'
+import { Skeleton } from 'boneyard-js/react'
 import { ProductCard } from '@/components/products/product-card'
-import { ProductGridSkeleton } from '@/components/products/product-skeleton'
 import { useProducts } from '@/hooks/use-products'
 
 export function FeaturedProducts() {
@@ -19,7 +19,7 @@ export function FeaturedProducts() {
     <Section className="bg-[#f7f9fb]">
       {/* Section header — Stitch pattern */}
       <div className="mb-12 text-center">
-        <span className="text-[#00288e] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
+        <span className="text-[#c51611] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
           Featured Products
         </span>
         <h2 className="text-4xl font-extrabold text-[#191c1e] tracking-tight">
@@ -31,7 +31,13 @@ export function FeaturedProducts() {
       </div>
 
       {isLoading ? (
-        <ProductGridSkeleton count={6} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} name="product-card" loading={true}>
+              <div />
+            </Skeleton>
+          ))}
+        </div>
       ) : (
         <motion.div
           ref={ref}
@@ -41,7 +47,9 @@ export function FeaturedProducts() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"
         >
           {(data?.data || []).slice(0, 6).map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Skeleton key={product.id} name="product-card" loading={false}>
+              <ProductCard product={product} />
+            </Skeleton>
           ))}
         </motion.div>
       )}
@@ -49,7 +57,7 @@ export function FeaturedProducts() {
       <div className="flex justify-center">
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 border border-[#c4c5d5] text-[#191c1e] px-8 py-3 rounded-lg font-bold text-sm hover:border-[#00288e] hover:text-[#00288e] transition-all"
+          className="inline-flex items-center gap-2 border border-[#c4c5d5] text-[#191c1e] px-8 py-3 rounded-lg font-bold text-sm hover:border-[#c51611] hover:text-[#c51611] transition-all"
         >
           View All Products
           <ArrowRight className="w-4 h-4" />

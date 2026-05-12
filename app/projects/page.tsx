@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import type { Project } from '@/lib/schemas/project'
@@ -28,6 +29,7 @@ function rowToProject(row: Record<string, unknown>): Project {
 }
 
 export default async function ProjectsPage() {
+  notFound()
   const supabase = await createClient()
   const { data } = await supabase
     .from('projects')
@@ -54,12 +56,12 @@ export default async function ProjectsPage() {
         {/* Accent stripe */}
         <div
           className="absolute bottom-0 left-0 right-0 h-1"
-          style={{ backgroundColor: '#9e5862' }}
+          style={{ backgroundColor: '#c51611' }}
         />
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <p
             className="font-semibold text-sm tracking-widest uppercase mb-3"
-            style={{ color: '#f4c2c8' }}
+            style={{ color: '#fca5a5' }}
           >
             Our Work
           </p>
@@ -79,7 +81,7 @@ export default async function ProjectsPage() {
             { label: 'Years of Experience', value: '10+' },
           ].map((stat) => (
             <div key={stat.label} className="bg-white rounded-2xl border border-slate-100 p-5 text-center shadow-sm">
-              <p className="text-3xl font-black mb-1" style={{ color: '#9e5862' }}>{stat.value}</p>
+              <p className="text-3xl font-black mb-1" style={{ color: '#c51611' }}>{stat.value}</p>
               <p className="text-sm text-slate-500 font-medium">{stat.label}</p>
             </div>
           ))}
@@ -87,7 +89,7 @@ export default async function ProjectsPage() {
 
         {featured.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-2xl font-black mb-6" style={{ color: '#566955' }}>Featured Projects</h2>
+            <h2 className="text-2xl font-black mb-6" style={{ color: '#4c8b32' }}>Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featured.map((project) => (
                 <ProjectCard key={project.id} project={project} />
@@ -98,7 +100,7 @@ export default async function ProjectsPage() {
 
         {others.length > 0 && (
           <div>
-            <h2 className="text-2xl font-black mb-6" style={{ color: '#566955' }}>More Projects</h2>
+            <h2 className="text-2xl font-black mb-6" style={{ color: '#4c8b32' }}>More Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {others.map((project) => (
                 <ProjectCard key={project.id} project={project} />

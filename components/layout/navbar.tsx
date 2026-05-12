@@ -12,7 +12,6 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products' },
   { label: 'Categories', href: '/categories' },
-  { label: 'Projects', href: '/projects' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
@@ -46,7 +45,7 @@ export function Navbar() {
               height={40}
               className="object-contain flex-shrink-0"
             />
-            <span className="font-black uppercase tracking-tighter text-xl leading-none" style={{ color: '#9e5862' }}>
+            <span className="font-black uppercase tracking-tighter text-xl leading-none" style={{ color: '#c51611' }}>
               Tumans Medicals
             </span>
           </Link>
@@ -60,7 +59,7 @@ export function Navbar() {
                 className="px-4 py-2 text-sm font-bold tracking-tight transition-colors"
                 style={
                   pathname === link.href
-                    ? { color: '#9e5862', borderBottom: '2px solid #9e5862' }
+                    ? { color: '#c51611', borderBottom: '2px solid #c51611' }
                     : { color: '#475569' }
                 }
               >
@@ -81,7 +80,7 @@ export function Navbar() {
             <Link
               href="/contact"
               className="text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all hover:opacity-90"
-              style={{ backgroundColor: '#566955' }}
+              style={{ backgroundColor: '#4c8b32' }}
             >
               Get a Quote
             </Link>
@@ -116,7 +115,7 @@ export function Navbar() {
                   className="px-4 py-3 rounded-md text-sm font-bold tracking-tight transition-colors"
                   style={
                     pathname === link.href
-                      ? { color: '#9e5862', backgroundColor: '#fdf2f3' }
+                      ? { color: '#c51611', backgroundColor: '#fef2f2' }
                       : { color: '#475569' }
                   }
                 >
@@ -134,7 +133,7 @@ export function Navbar() {
                 <Link
                   href="/contact"
                   className="mx-4 text-center text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:opacity-90 transition-all"
-                  style={{ backgroundColor: '#566955' }}
+                  style={{ backgroundColor: '#4c8b32' }}
                 >
                   Get a Quote
                 </Link>

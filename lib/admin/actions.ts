@@ -3,8 +3,6 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import fs from 'fs'
-import path from 'path'
 
 // ─── HELPERS ───────────────────────────────────────────────────────────────────
 
@@ -320,20 +318,27 @@ export async function uploadImage(formData: FormData): Promise<{ url: string } |
 
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase()
   const filename = `${Date.now()}-${safeName}`
-  const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
 
-  if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true })
+  const supabase = await createClient()
+  const { error } = await supabase.storage
+    .from('uploads')
+    .upload(filename, await file.arrayBuffer(), { contentType: file.type })
 
-  const buffer = Buffer.from(await file.arrayBuffer())
-  fs.writeFileSync(path.join(uploadsDir, filename), buffer)
+  if (error) return { error: error.message }
+
+  const { data: { publicUrl } } = supabase.storage.from('uploads').getPublicUrl(filename)
 
   revalidatePath('/admin/media')
-  return { url: `/uploads/${filename}` }
+  return { url: publicUrl }
 }
 
-export async function deleteMedia(filename: string) {
-  const safeName = path.basename(filename)
-  const filepath = path.join(process.cwd(), 'public', 'uploads', safeName)
-  if (fs.existsSync(filepath)) fs.unlinkSync(filepath)
+export async function deleteMedia(fileUrl: string) {
+  // Extract object name from Supabase public URL or legacy /uploads/ path
+  const objectName = fileUrl.includes('/uploads/')
+    ? fileUrl.split('/uploads/').pop()!
+    : fileUrl.split('/').pop()!
+
+  const supabase = await createClient()
+  await supabase.storage.from('uploads').remove([objectName])
   revalidatePath('/admin/media')
 }

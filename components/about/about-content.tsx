@@ -16,11 +16,10 @@ const values = [
 ]
 
 const milestones = [
-  { year: '2009', event: 'Tumans Medicals SARL founded in Douala, Cameroon' },
-  { year: '2012', event: 'Expanded product range to include laboratory equipment' },
-  { year: '2016', event: 'Became official distributor for leading international brands' },
-  { year: '2020', event: 'Opened branches in Douala and Maroua to serve more regions' },
-  { year: '2023', event: 'Extended operations to Tchad; launched digital catalog' },
+  { year: '1995', event: 'Tumans Medicals founded in Yaounde by Mr. Tumansang Suh Clement' },
+  { year: '1997', event: 'Opened Douala branch to extend reach to the economic capital' },
+  { year: '2022', event: 'Expanded northward with the opening of the Maroua branch' },
+  { year: '2025', event: 'Extended operations to Tchad, serving the greater Central Africa region' },
 ]
 
 export function AboutContent() {
@@ -42,16 +41,16 @@ export function AboutContent() {
             animate="visible"
             className="max-w-3xl"
           >
-            <motion.span variants={slideUp} className="text-xs font-bold uppercase tracking-[0.2em] text-[#00288e]">
+            <motion.span variants={slideUp} className="text-xs font-bold uppercase tracking-[0.2em] text-[#c51611]">
               About Us
             </motion.span>
             <motion.h1 variants={slideUp} className="text-5xl font-black tracking-tighter text-[#191c1e] mt-3 mb-4">
               Powering Cameroon&apos;s Healthcare Infrastructure
             </motion.h1>
-            <motion.div variants={slideUp} className="h-1.5 w-24 bg-[#00288e] rounded-full mt-4 mb-6" />
+            <motion.div variants={slideUp} className="h-1.5 w-24 bg-[#c51611] rounded-full mt-4 mb-6" />
             <motion.p variants={slideUp} className="text-lg text-[#444653] leading-relaxed">
-              Since 2009, Tumans Medicals SARL has been Cameroon&apos;s trusted partner for medical and laboratory equipment.
-              Headquartered in Douala, with branches in Yaounde, Maroua, and Tchad, we work closely with hospitals, clinics, and research institutions
+              Founded in October 1995 by Mr. Tumansang Suh Clement, Tumans Medicals has been Cameroon&apos;s trusted partner for medical and laboratory equipment.
+              With branches in Yaounde, Douala, Maroua, and Tchad, we work closely with hospitals, clinics, and research institutions
               to ensure they have the tools they need to save lives.
             </motion.p>
           </motion.div>
@@ -68,7 +67,7 @@ export function AboutContent() {
           className="grid lg:grid-cols-2 gap-16 items-center"
         >
           <motion.div variants={slideIn}>
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#00288e]">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#c51611]">
               Our Mission
             </span>
             <h2 className="text-4xl font-extrabold tracking-tight text-[#191c1e] mt-3 mb-6">
@@ -88,10 +87,10 @@ export function AboutContent() {
               ))}
             </ul>
           </motion.div>
-          <motion.div variants={slideUp} className="relative aspect-[4/3] bg-[#1e40af] rounded-2xl overflow-hidden">
+          <motion.div variants={slideUp} className="relative aspect-[4/3] bg-[#c51611] rounded-2xl overflow-hidden">
             <div className="absolute inset-0 flex items-end p-8">
               <div>
-                <div className="text-5xl font-black text-white mb-2">15+</div>
+                <div className="text-5xl font-black text-white mb-2">30+</div>
                 <div className="text-white/70 text-lg">Years of excellence in medical supply</div>
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   <div>
@@ -112,7 +111,7 @@ export function AboutContent() {
       {/* Values */}
       <Section className="bg-[#f2f4f6]">
         <div className="mb-12 text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#00288e]">Our Values</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#c51611]">Our Values</span>
           <h2 className="text-4xl font-extrabold tracking-tight text-[#191c1e] mt-3">What Drives Us</h2>
         </div>
         <motion.div
@@ -138,7 +137,7 @@ export function AboutContent() {
       {/* Timeline */}
       <Section className="bg-white">
         <div className="mb-12 text-center">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#00288e]">Our Journey</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#c51611]">Our Journey</span>
           <h2 className="text-4xl font-extrabold tracking-tight text-[#191c1e] mt-3">Milestones That Define Us</h2>
         </div>
         <motion.div
@@ -153,10 +152,10 @@ export function AboutContent() {
             {milestones.map((m) => (
               <motion.div key={m.year} variants={slideUp} className="flex gap-6 mb-8 last:mb-0 relative">
                 <div className="w-[72px] flex-shrink-0 flex justify-end pr-4">
-                  <span className="text-sm font-black text-[#00288e]">{m.year}</span>
+                  <span className="text-sm font-black text-[#c51611]">{m.year}</span>
                 </div>
                 <div className="relative flex items-start pt-0.5">
-                  <div className="w-3 h-3 rounded-full bg-[#00288e] border-2 border-white absolute -left-[26px] top-1" />
+                  <div className="w-3 h-3 rounded-full bg-[#c51611] border-2 border-white absolute -left-[26px] top-1" />
                   <p className="text-sm text-[#191c1e] leading-relaxed pl-1">{m.event}</p>
                 </div>
               </motion.div>
@@ -168,13 +167,13 @@ export function AboutContent() {
       {/* CTA */}
       <Section className="bg-[#131b2e]">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#dde1ff]">Work With Us</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#fee2e2]">Work With Us</span>
           <h2 className="text-4xl font-extrabold tracking-tight text-white mt-3 mb-4">Ready to Work With Us?</h2>
           <p className="text-white/60 leading-relaxed mb-10">
             Contact our team to discuss your equipment needs and get a customised quote.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button asChild size="lg" className="bg-[#1e40af] hover:bg-[#00288e] text-white border-0 rounded-xl font-bold px-8">
+            <Button asChild size="lg" className="bg-[#c51611] hover:bg-[#c51611] text-white border-0 rounded-xl font-bold px-8">
               <Link href="/contact">Contact Us <ArrowRight className="w-4 h-4 ml-2" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-2 border-white/30 text-white bg-transparent hover:bg-white/10 rounded-xl font-bold px-8">

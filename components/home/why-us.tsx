@@ -47,7 +47,7 @@ export function WhyUs() {
     <Section className="bg-white">
       {/* Section header */}
       <div className="mb-12 text-center">
-        <span className="text-[#00288e] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
+        <span className="text-[#c51611] font-bold tracking-[0.2em] text-xs uppercase mb-3 block">
           Why Tumans Medical
         </span>
         <h2 className="text-4xl font-extrabold text-[#191c1e] tracking-tight">
@@ -71,7 +71,7 @@ export function WhyUs() {
             variants={slideUp}
             className="flex gap-4 p-6 rounded-xl bg-[#f2f4f6] hover:bg-white hover:shadow-md transition-all"
           >
-            <div className="w-10 h-10 rounded-lg bg-[#1e40af] flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="w-10 h-10 rounded-lg bg-[#4c8b32] flex items-center justify-center flex-shrink-0 mt-0.5">
               <b.icon className="w-5 h-5 text-white" />
             </div>
             <div>

@@ -35,7 +35,14 @@
       "mcp__claude_ai_Supabase__execute_sql",
       "Bash(grep:*)",
       "mcp__claude_ai_Supabase__list_tables",
-      "Bash(npx tsx:*)"
+      "Bash(npx tsx:*)",
+      "Read(//mnt/c/Users/Tumi/WebstormProjects/**)",
+      "Bash(python \"C:/Users/Tumi/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1/.claude/skills/ui-ux-pro-max/scripts/search.py\" \"medical wholesale B2B product catalog professional\" --design-system -p \"Tumans Medicals\" -f markdown)",
+      "Bash(python \"C:/Users/Tumi/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1/src/ui-ux-pro-max/scripts/search.py\" \"medical wholesale B2B product catalog professional\" --design-system -p \"Tumans Medicals\" -f markdown)",
+      "Bash(npm show:*)",
+      "Bash(npm list:*)",
+      "Bash(Get-ChildItem -Path \"app\" -Recurse -Filter \"*api*\" -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)"
     ]
   }
 }
